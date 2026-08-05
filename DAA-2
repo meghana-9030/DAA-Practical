@@ -1,0 +1,73 @@
+#linear search
+n = int(input("Enter the number of elements: "))
+
+arr = []
+
+for i in range(n):
+    arr.append(int(input("Enter number: ")))
+
+key = int(input("Enter the number to search: "))
+
+found = False
+
+for i in range(n):
+    if arr[i] == key:
+        print("Element found at position", i + 1)
+        found = True
+        break
+
+if found == False:
+    print("Element not found")
+#output
+Enter the number of elements: 4
+Enter number: 7
+Enter number: 34
+Enter number: 12
+Enter number: 6
+Enter the number to search: 6
+Element found at position 4
+
+#binary search
+n = int(input("Enter the number of elements: "))
+
+arr = []
+
+for i in range(n):
+    arr.append(int(input("Enter number: ")))
+
+arr.sort()
+
+print("Sorted array:", arr)
+
+key = int(input("Enter the number to search: "))
+
+low = 0
+high = n - 1
+found = False
+
+while low <= high:
+
+    mid = (low + high) // 2
+
+    if arr[mid] == key:
+        print("Element found at position", mid + 1)
+        found = True
+        break
+
+    elif arr[mid] < key:
+        low = mid + 1
+
+    else:
+        high = mid - 1
+
+if found == False:
+    print("Element not found")
+#output
+Enter the number of elements: 4
+Enter number: 3
+Enter number: 12
+Enter number: 15
+Enter number: 18
+Sorted array: [3, 12, 15, 18]
+Enter the number to search: 15
+Element found at position 3
