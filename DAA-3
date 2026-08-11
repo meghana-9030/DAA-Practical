@@ -28,3 +28,11 @@ def print_array(arr):
 heap_sort(arr)
 print_array(arr)
 print(arr)
+Enter number of elements: 5
+
+#OUTPUT:
+Enter elements:
+2 35 6 7 8
+Sorted Array:
+2 6 7 8 35
+[2, 6, 7, 8, 35]
