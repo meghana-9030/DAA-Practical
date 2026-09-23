@@ -1,0 +1,34 @@
+n = int(input("Enter number of coins: "))
+coins = []
+for i in range(n):
+    coin = int(input("Enter coin: "))
+    coins.append(coin)
+amount = int(input("Enter amount: "))
+dp = [float('inf')] * (amount + 1)
+dp[0] = 0
+for i in range(1, amount + 1):
+    for coin in coins:
+        if coin <= i:
+            dp[i] = min(dp[i], dp[i - coin] + 1)
+if dp[amount] == float('inf'):
+    print("Amount cannot be made")
+else:
+    print("Minimum number of coins:", dp[amount])
+
+OUTPUT:
+Enter number of coins: 3
+Enter coin: 1
+Enter coin: 2
+Enter coin: 5
+Enter amount: 11
+Minimum number of coins: 3
+
+Method : Dyanmic Programming
+Time Complexity: O(n x A)
+Space Complexity : O(A)
+
+Conclusion –
+Coin Change using DP
+The Coin Change problem was solved using Dynamic Programming. 
+The minimum number of coins required to make the given amount is found by breaking the problem into smaller subproblems and storing their results. 
+This avoids repeated calculations and gives an efficient solution.
