@@ -7,7 +7,7 @@ for i in range(n):
 start = int(input("Enter starting vertex: "))
 
 "Breadth first search"
-visited[start] = True
+visited = [False] * len(graph)
 queue = deque([start])
 print("\nBFS:", end=" ")
 while queue:
