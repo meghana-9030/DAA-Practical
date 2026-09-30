@@ -7,7 +7,7 @@ for i in range(n):
 start = int(input("Enter starting vertex: "))
 
 "Breadth first search"
-visited = set()
+visited[start] = True
 queue = deque([start])
 print("\nBFS:", end=" ")
 while queue:
@@ -21,7 +21,7 @@ while queue:
                 queue.append(neighbour)
 
 " Depth first search "
-visited = set()
+visited[start] = True
 def dfs(node):
     visited.add(node)
     print(node, end=" ")
