@@ -1,0 +1,69 @@
+from collections import deque
+
+
+n = int(input("Enter number of vertices: "))
+
+
+graph = {}
+
+for i in range(n):
+    graph[i] = list(map(int, input(f"Enter neighbours of {i}: ").split()))
+
+
+start = int(input("Enter starting vertex: "))
+
+"Breadth first search"
+visited = set()
+queue = deque([start])
+
+print("\nBFS:", end=" ")
+
+while queue:
+    node = queue.popleft()
+
+    if node not in visited:
+        print(node, end=" ")
+        visited.add(node)
+
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                queue.append(neighbour)
+
+
+" Depth first search "
+visited = set()
+
+def dfs(node):
+    visited.add(node)
+    print(node, end=" ")
+
+    for neighbour in graph[node]:
+        if neighbour not in visited:
+            dfs(neighbour)
+
+print("\nDFS:", end=" ")
+dfs(start)
+
+  '''
+  Output:
+Enter number of vertices: 6
+Enter vertices: A B C D E F
+Enter neighbours of A: B C
+Enter neighbours of B: D E
+Enter neighbours of C: F
+Enter neighbours of D:
+Enter neighbours of E:
+Enter neighbours of F:
+Enter starting vertex: A
+BFS: A B C D E F
+DFS: A B D E C F
+  
+BFS
+TC:O(V + E)
+SC:O(V)
+DFS
+TC:O(V + E)
+SC:O(V)
+Conclusion:
+BFS traverses the graph level-by-level using a queue, while DFS traverses deeply using recursion.
+Both visit every vertex and edge at most once, giving O(V + E) time complexity.
