@@ -1,26 +1,15 @@
 from collections import deque
-
-
 n = int(input("Enter number of vertices: "))
-
-
 graph = {}
-
 for i in range(n):
     graph[i] = list(map(int, input(f"Enter neighbours of {i}: ").split()))
-
-
 start = int(input("Enter starting vertex: "))
-
 "Breadth first search"
 visited = set()
 queue = deque([start])
-
 print("\nBFS:", end=" ")
-
 while queue:
     node = queue.popleft()
-
     if node not in visited:
         print(node, end=" ")
         visited.add(node)
@@ -29,10 +18,8 @@ while queue:
             if neighbour not in visited:
                 queue.append(neighbour)
 
-
 " Depth first search "
 visited = set()
-
 def dfs(node):
     visited.add(node)
     print(node, end=" ")
