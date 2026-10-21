@@ -1,0 +1,37 @@
+v = int(input("Enter the number of vertices: "))
+
+print("Enter the adjacency matrix (use 999 for infinity):")
+dist = []
+
+for i in range(v):
+    row = list(map(int, input().split()))
+    dist.append(row)
+
+# Floyd-Warshall Algorithm
+for k in range(v):
+    for i in range(v):
+        for j in range(v):
+            dist[i][j] = min(dist[i][j],
+                             dist[i][k] + dist[k][j])
+
+print("Shortest distance matrix:")
+for row in dist:
+    print(*row)
+
+  '''
+  OUTPUT:
+  Enter the number of vertices: 4
+Enter the adjacency matrix (use 999 for infinity):
+0 5 999 10
+999 0 3 999
+999 999 0 1
+999 999 999 0
+
+Shortest distance matrix:
+0 5 8 9
+999 0 3 4
+999 999 0 1
+999 999 999 0
+
+conclusion:
+The Floyd–Warshall algorithm was implemented successfully in Python using user input to find the shortest distances between all pairs of vertices in a graph.  
