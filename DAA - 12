@@ -1,0 +1,51 @@
+def tsp(graph, n, curr, count, cost, visited):
+    global min_cost
+
+    if count == n and graph[curr][0] > 0:
+        min_cost = min(min_cost, cost + graph[curr][0])
+        return
+
+    for i in range(n):
+        if not visited[i] and graph[curr][i] > 0:
+            visited[i] = True
+            tsp(graph, n, i, count + 1,
+                cost + graph[curr][i], visited)
+            visited[i] = False
+
+
+n = int(input("Enter number of cities: "))
+
+graph = []
+
+print("Enter cost matrix:")
+for i in range(n):
+    row = list(map(int, input().split()))
+    graph.append(row)
+
+min_cost = float('inf')
+visited = [False] * n
+visited[0] = True
+
+tsp(graph, n, 0, 1, 0, visited)
+
+if min_cost == float('inf'):
+    print("Tour is not possible")
+else:
+    print("Minimum Cost =", min_cost)
+
+
+#OUTPUT
+Enter number of cities: 4
+Enter cost matrix:
+0 10 15 20
+10 0 35 25
+15 35 0 30
+20 25 30 0
+Minimum Cost = 80
+
+Time complexity: O(N!)
+Space complexity: O(N!)
+
+CONCLUSION:
+The Travelling Salesman Problem is used to find the minimum cost of visiting all cities exactly once and returning to the starting city. 
+Backtracking checks different possible routes and finds the minimum cost.
